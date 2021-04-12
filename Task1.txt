@@ -1,0 +1,92 @@
+Task 1:
+
+# 1. Create three variables in a single line and assign values to them in such a manner that each one of
+#    them belongs to a different data type.
+#    E.g. :
+#    a = 1,
+#    b = 2.01,
+#    c = 'string'
+a,b,c = 1, 2.01,'string'
+print(a,b,c)
+
+===============================================================================================================
+
+# 2. Create a variable of type complex and swap it with another variable of type integer.
+
+a=5+6j
+print("a={} is ".format(a), type(a))
+b=5
+print("b={} is ".format(b), type(b))
+
+a,b = b,a
+
+print("After Swapping :a={} is ".format(a), type(a))
+print("b={} is ".format(b), type(b))
+
+===============================================================================================================
+
+# 3. Swap two numbers using a third variable and do the same task without using any third variable.
+
+a,b=2,3
+print("Swap using third variable \nBefore swap:a={} and b={}".format(a,b))
+c=a
+a=b
+b=c
+print("After swap: a={} and b={}".format(a,b))
+
+a,b=b,a
+print("Swap without third variable \nBefore swap:a={} and b={}".format(a,b))
+print("After swap: a={} anda b={}".format(a,b))
+
+===============================================================================================================
+
+# 4. Write a program that takes input from the user and prints it using both Python 2.x and Python 3.x Version.
+
+# user = raw_input("Enter from keyboard")
+# print user
+
+user1 = eval(input("Enter from keyboard "))
+print(user1,type(user1))
+
+===============================================================================================================
+
+# 5. Write a program to complete the task given below:
+# Ask users to enter any 2 numbers in between 1-10 , add the two numbers and keep the sum in
+# another variable called z. Add 30 to z and store the output in variable result and print result as the final output.
+
+a,b =eval(input("enter any 2 numbers between 1-10 "))
+z=a+b
+print(z)
+result=z+30
+print("After adding 30 : ",result)
+
+===============================================================================================================
+
+# 6. Write a program to check the data type of the entered values.
+# HINT: Printed output should say - The data type of the input value is : int/float/string/etc
+
+user = eval(input("Enter numbers or characters: "))
+print("The data type of the input value is :",type(user))
+
+===============================================================================================================
+
+#7. Create Variables using formats such as Upper CamelCase, Lower CamelCase, SnakeCase and UPPERCASE.
+
+UpperCamelCase = "TheFirstLetterIsUpper"
+print("UpperCamelCase is ",UpperCamelCase)
+LowerCamelCase = "theFirstLetterIsLower"
+print("LowerCamelCase is ",LowerCamelCase)
+SnakeCamelCase = "all_letters_are_lower_with_hyphen_in_between"
+print("SnakeCamelCase is ",SnakeCamelCase)
+UpperCase = "UPPERCASE LETTERS"
+print("UpperCase is ",UpperCase)
+
+===============================================================================================================
+
+#8. If one data type value is assigned to ‘a’ variable and then a different data type value is assigned to ‘a’
+# again. Will it change the value? If Yes then Why?
+a=10
+print(a)
+a="str"
+print(a)
+# Yes,in python datatype is assigned dynamically.
