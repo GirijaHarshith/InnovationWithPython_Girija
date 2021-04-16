@@ -1,0 +1,123 @@
+Task 3:
+=========================================================================================================
+# 1.Create a list of 10 elements of four different data types like int, string, complex and float.
+
+L = [1, 23, 3455, "Consultadd", "Training", "Python", 1+2j, 8+9j, 4.8, 9.8]
+print(type(L))
+print(L)
+
+=========================================================================================================
+# 2. Create a list of size 5 and execute the slicing structure.
+
+l = [1, 5, 3.5, 9, 8]
+print(l[:])
+print(l[1:])
+print(l[-1:])
+print(l[:-1])
+print(l[:-1:2])
+print(l[:-2])
+
+=========================================================================================================
+# 3. Write a program to get the sum and multiply of all the items in a given list.
+
+sum_mul = [1, 2, 3, 4, 5, 6, 7, 8, 8, 9]
+sum = 0
+mul = 1
+for i in sum_mul:
+    sum += i
+    mul *= i
+
+print("Sum of items in list: ", sum)
+print("Multiply of all items in list: ", mul)
+
+# sum = 0
+# mul = 1
+# for i in range(len(sum_mul)):
+#     sum += sum_mul[i]
+#     mul *= sum_mul[i]
+# else:
+#     print("\nTried 2nd for loop")
+# 
+# print("Sum of items in list: ", sum)
+# print("Multiply of all items in list: ", mul)
+
+=========================================================================================================
+# 4. Find the largest and smallest number from a given list.
+
+L = [1, 9.9, 8, 7, -7, 555, 986, 53432]
+print("Maximum number in the list: ", max(L))
+print("Minimum number in the list: ", min(L))
+
+===========================================================================================================
+# 5. Create a new list which contains the specified numbers after removing the even numbers from a 
+# predefined list.
+
+L = [1, 7, 8, 9, 6, 5, 4, 3]
+newlist = []
+for i in L:
+    if (i % 2) != 0:
+        newlist.append(i)
+
+print(newlist)
+
+=========================================================================================================
+# 6.Create a list of elements such that it contains the squares of the first and last 5 elements between 
+#1 and 30 (both included).
+
+squares = []
+for i in range(1, 31):
+    if i == 1 or i > 25:
+        squares.append(i*i)
+
+print(squares)
+
+=========================================================================================================
+# 7. Write a program to replace the last element in a list with another list.
+# Sample input: [1,3,5,7,9,10], [2,4,6,8]
+# Expected output: [1,3,5,7,9,2,4,6,8]
+
+inp, i = [1, 3, 5, 7, 9, 10], [2, 4, 6, 8]
+print(inp, i)
+
+result = inp[:-1]+i
+print(result)
+
+# Unpacking list using *
+result1 = [*inp[:-1], *i]
+print(result1)
+=========================================================================================================
+# 8. Create a new dictionary by concatenating the following two dictionaries:
+# Sample input: a={1:10,2:20} b={3:30,4:40}
+# Expected output: {1:10,2:20,3:30,4:40}
+
+a = {1: 10, 2: 20}
+b = {3: 30, 4: 40}
+
+for item in b.items():
+    a.update({item})
+
+print(a)
+=========================================================================================================
+# 9. Create a dictionary that contain numbers in the form(x:x*x) where x takes all the values between 1
+# and n(both 1 and n included).
+# Sample input: n=5
+# Expected output: {1:1, 2:4, 3:9, 4:16, 5:25}
+
+n = int(input("Enter an integer value to get squares till that number : "))
+dict1 = {}
+for i in range(1, n+1):
+    print(i)
+    dict1.update({i: i*i})
+print(dict1)
+
+=========================================================================================================
+# 10. Write a program which accepts a sequence of comma-separated numbers from console and
+# generates a list and a tuple which contains every number in the form of string.
+# Sample input: 34,67,55,33,12,98
+# Expected output: [‘34’,’67’,’55’,’33’,’12’,’98’] (‘34’,’67’,’55’,’33’,’12’,’98’)
+
+
+n = [int(x) for(x) in input("Enter the multiple inputs separated by comma : ").split(',')]
+print(n, tuple(n))
+
+=========================================================================================================
