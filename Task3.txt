@@ -66,7 +66,7 @@ print(newlist)
 
 squares = []
 for i in range(1, 31):
-    if i == 1 or i > 25:
+    if i < 6 or i > 25:
         squares.append(i*i)
 
 print(squares)
@@ -93,9 +93,13 @@ print(result1)
 a = {1: 10, 2: 20}
 b = {3: 30, 4: 40}
 
-for item in b.items():
-    a.update({item})
+# for item in b.items():
+#     a.update({item})
+#
+# print(a)
 
+# dictionaries can be concatenated without loop:
+a.update(b)
 print(a)
 =========================================================================================================
 # 9. Create a dictionary that contain numbers in the form(x:x*x) where x takes all the values between 1
@@ -106,8 +110,8 @@ print(a)
 n = int(input("Enter an integer value to get squares till that number : "))
 dict1 = {}
 for i in range(1, n+1):
-    print(i)
-    dict1.update({i: i*i})
+    # dict1.update({i: i*i})
+    dict1[i] = i**2
 print(dict1)
 
 =========================================================================================================
@@ -116,8 +120,10 @@ print(dict1)
 # Sample input: 34,67,55,33,12,98
 # Expected output: [‘34’,’67’,’55’,’33’,’12’,’98’] (‘34’,’67’,’55’,’33’,’12’,’98’)
 
-
-n = [int(x) for(x) in input("Enter the multiple inputs separated by comma : ").split(',')]
+n = input("Enter the multiple inputs separated by comma : ").split(',')
 print(n, tuple(n))
+
+# n = [int(x) for(x) in input("Enter the multiple inputs separated by comma : ").split(',')]
+# print(n, tuple(n))
 
 =========================================================================================================
