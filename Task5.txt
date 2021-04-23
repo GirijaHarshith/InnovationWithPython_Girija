@@ -17,7 +17,18 @@ except SyntaxError:
 # entered name is incorrect throw an exception and ask them to enter the name again. Make sure
 # to use read only mode.
 
-#File handling
+import sys
+
+try:
+    f = open(sys.argv[1], 'r')
+    print("Found file:", f.name)
+    f.close()
+except FileNotFoundError:
+    print("File", sys.argv[1], "is not found. Please enter the correct file name again")
+
+# with open(sys.argv[1],'r', encoding='utf-8') as f:
+#     f_contents = f.readline()
+#     print(f_contents)
 
 ===========================================================================================================
 # 3. Write a program to handle an error if the user entered a number more than four digits it should
@@ -71,4 +82,12 @@ https://www.programiz.com/python-programming/exception-handling
 # Which is of even length
 # Make sure you return the content in The same link as it is present.
 
-# File handling
+import sys
+
+try:
+    with open(sys.argv[1], 'r') as f:
+        for line in f:
+            if len(line.rstrip()) % 2 == 0:
+                print(line)
+except FileNotFoundError:
+    print("File not found")
