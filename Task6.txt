@@ -1,0 +1,113 @@
+Task 6
+
+# 1. Write a program in Python to find out the character in a string which is uppercase using list
+# comprehension.
+
+s = "TraInIng"
+
+letters = []
+letters = [letter for letter in s if letter.isupper()]
+print(letters)
+
+# letters = []
+# for letter in s:
+#     if letter.isupper():
+#         letters.append(letter)
+#
+# print(letters)
+
+========================================================================================================================
+# 2. Write a program to construct a dictionary from the two lists containing the names of students and
+# their corresponding subjects. The dictionary should map the students with their respective subjects.
+# Let’s see how to do this using for loops and dictionary comprehension.
+# HINT - Use Zip function also
+# Sample input: students = ['Smit', 'Jaya', 'Rayyan'] subjects = ['CSE', 'Networking', 'Operating System']
+# Expected output: {‘Smit’ : ’CSE’ , ’Jaya’ : ’Networking’ , ’Rayyan’ : ’Operating System’}
+
+students = ['Smit', 'Jaya', 'Rayyan']
+subjects = ['CSE', 'Networking', 'Operating System']
+
+# using List comprehension
+# result = list(map(lambda x, y: x+':'+y, students, subjects))
+# print(result)
+
+# # using zip
+# for item in zip(students, subjects):
+#     print(item)
+
+# # using list comprehension and 1 variable (using zip)
+# res = list(map(lambda x: ': '.join(x), zip(students, subjects)))
+# print(res)
+
+# using dict comprehension
+# res1 = dict(map(lambda x, y: {x, y}, students, subjects))
+# print(res1)
+
+# using for loop
+
+res = {}
+i = 0
+for key in students:
+    # if there are extra keys without corresponding values, then add ""
+    if i == len(subjects):
+        value = ""
+    else:
+        value = subjects[i]
+
+    res[key] = value
+    i += 1
+
+print(res)
+
+========================================================================================================================
+# 3. Learn More about Yield, next and Generators
+
+========================================================================================================================
+# 4. Write a program in Python using generators to reverse the string.
+# Input String = “Consultadd Training”.
+
+str = 'Consultadd Training'
+def reverse_string(str):
+    str_len = len(str)
+    for i in range(str_len-1,-1,-1):
+        yield str[i]
+
+for item in reverse_string(str):
+    print(item, end = '')
+
+# for loop internally using while loop like below. item above inside for loop has already called __next__() from yield
+# item = reverse_string(str)
+# str_len = len(str)
+# while True:
+#     print(next(item), end = '') #item.__next__()
+#     str_len -= 1
+#     if(str_len == 0):
+#         break
+
+# print(str[::-1])
+
+# print("".join(reversed(str)))
+
+========================================================================================================================
+# 5. Write an example on decorators.
+
+def div(a,b):
+    yield a / b
+    yield "This line will not print if i had written return above instead of yield"
+
+def reverse_div(func):
+    def inner(a, b):
+        a, b = b, a
+        return func(a, b)
+    return inner
+
+r_div = reverse_div(div)
+
+r = div(4,8)
+print(r.__next__())
+print(r.__next__())
+
+s = r_div(4,8)
+print(s.__next__())
+print(s.__next__())
+
