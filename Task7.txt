@@ -1,0 +1,195 @@
+Task 7
+
+# 1. Write a program that calculates and prints the value according to the given formula:
+# Q= Square root of [(2*C*D)/H]
+# Following are the fixed values of C and H:
+# C is 50.
+# H is 30.
+# D is a variable whose values should be input to your program in a comma-separated sequence.
+from math import sqrt
+
+class SquareRoot:
+    def __init__(self, C, H):
+        self.C = C
+        self.H = H
+        D =eval(input("Enter value comma separated: "))
+        self.D = D
+        print(self.D)
+
+    def square_root(self):
+        new_D = 1
+        for item in self.D:
+            new_D *= item
+        q = sqrt((2* self.C * new_D)/self.H)
+        return q
+
+ob = SquareRoot(50,30)
+res = ob.square_root()
+print(res)
+
+print(ob.C, ob.H, ob.D)
+
+=======================================================================================================================
+# 2. Define a class named Shape and its subclass Square. The Square class has an init function which
+# takes length as argument. Both classes have an area function which can print the area of the shape
+# where Shape’s area is 0 by default.
+
+class Shape:
+    def __init__(self,a=0):
+        self.a = a
+
+    def area(self):
+        return self.a
+
+class Square(Shape):
+    def __init__(self,length):
+        self.L = length
+
+    def area(self):
+        return self.L**2
+
+ob1 = Shape()
+# ob1.area()
+print(ob1.area())
+
+ob = Square(2)
+o = ob.area()
+print(o)
+
+=======================================================================================================================
+# 3. Create a class to find three elements that sum to zero from a set of n real numbers
+# Input array: [-25,-10,-7,-3,2,4,8,10]
+# Expected output: [[-10,2,8],[-7,-3,10]]
+
+class ThreeSum:
+    def threesum(self,nums):
+        res = []
+        nums.sort()
+        for i in range(len(nums)):
+            lo = i +1
+            hi = len(nums)-1
+            self.twosum(nums, i, lo, hi, res)
+        print(res)
+
+    def twosum(self, nums, i, lo, hi, res):
+        while(lo<hi):
+            sum = nums[i] + nums[lo] + nums[hi]
+            if(sum<0):
+                lo += 1
+            elif(sum>0):
+                hi -= 1
+            else:
+                res.append([nums[i],nums[lo],nums[hi]])
+                lo += 1
+                hi -= 1
+                while lo<hi and nums[lo] == nums[lo-1]:
+                    lo += 1
+
+
+ob = ThreeSum()
+ob.threesum([-25, -10, -7, -3, 2, 4, 8, 10])
+
+=======================================================================================================================
+# 4. Create a Time class and initialize it with hours and minutes.
+# Create a method addTime which should take two Time objects and add them.
+# E.g.- (2 hour and 50 min)+(1 hr and 20 min) is (4 hr and 10 min)
+# Create another method displayTime which should print the time.
+# Also create a method displayMinute which should display the total minutes in the Time.
+# E.g.- (1 hr 2 min) should display 62 minute.
+
+class Time:
+    def __init__(self, time1_hour, time1_min, time2_hour, time2_min):
+        self.time1_hour = time1_hour
+        self.time1_min = time1_min
+        self.time2_hour = time2_hour
+        self.time2_min = time2_min
+        self.total_hours = 0
+        self.total_mins = 0
+
+    def addTime(self):
+        self.total_mins = self.time1_min + self.time2_min
+        extra_hour = 0
+        if (self.total_mins >= 60):
+            extra_hour = int(self.total_mins/60)
+            self.total_mins -= extra_hour * 60
+
+        self.total_hours = self.time1_hour + self.time2_hour+extra_hour
+
+    def displayTime(self):
+        print("{} hours and {} mins".format(self.total_hours, self.total_mins))
+
+    def displayMinute(self,time_hour,time_min):
+        total_minutes = time_hour*60 + time_min
+        print("Total minutes in {} hour {} minute is {} minutes".format(time_hour, time_min, total_minutes))
+
+time1_hour = int(input("Enter time1 hours: "))
+time1_min = int(input("Enter time1 min: "))
+time2_hour = int(input("Enter time2 hour: "))
+time2_min = int(input("Enter time2 min: "))
+ob = Time(time1_hour,time1_min,time2_hour,time2_min)
+ob.addTime()
+ob.displayTime()
+ob.displayMinute(time1_hour,time1_min)
+
+=======================================================================================================================
+# 5. Write a Person class with an instance variable “age” and a constructor that takes an integer as a
+# parameter. The constructor must assign the integer value to the age variable after confirming the
+# argument passed is not negative; if a negative argument is passed then the constructor should set
+# age to 0 and print “Age is not valid, setting age to 0”. In addition, you must write the following instance
+# methods:
+# yearPasses() should increase age by the integer value that you are passing inside the function.
+# amIOld() should perform the following conditional actions:\
+# If age is between 0 and <13, print “You are young”.
+# If age is >=13 and <=19 , print “You are a teenager”.
+# Otherwise, print “You are old”.
+# Sample Input for amIOld():
+# -1
+# 4
+# 10
+# 16
+# 18
+# 64
+# 38
+# Expected Output for amIOld():
+# Age is not valid, setting age to 0.
+# You are young.
+# You are young.
+# You are a teenager.
+# You are a teenager.
+# You are old.
+# You are old.
+#
+# Consider the age variable to be set to 38 then:
+# Sample Input for yearPasses(): 4
+# Expected Output for yearPasses(): 42
+
+class Person:
+    def __init__(self, age):
+        if(age < 0):
+            print("Age is not valid, setting age to 0.")
+            self.age = 0
+        else:
+            self.age = age
+
+    def yearPasses(self, num):
+        self.age += num
+        print("Your new age will be : ", self.age)
+
+    def amIOld(self):
+        if(self.age >= 0 and self.age < 13):
+            print("You are young")
+        elif(self.age >=13 and self.age <=19):
+            print("You are a teenager")
+        else:
+            print("You are old")
+
+Person(-1)
+Person(4).amIOld()
+Person(10).amIOld()
+Person(16).amIOld()
+Person(18).amIOld()
+Person(64).amIOld()
+Person(38).amIOld()
+Person(38).yearPasses(4)
+
+
