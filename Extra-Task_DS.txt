@@ -1,0 +1,177 @@
+Extra-Task_DS
+
+# 1. Create a list of given structure and get the Access list as provided below:
+# x=[100,200,300,400,500,[1,2,3,4,5,[10,20,30,40,50],6,7,8,9],600,700,800]
+# Access list: [1, 2, 3, 4]Access list: [600, 700]
+# Access list: [100, 300, 500, 600, 800]
+# Access list: [[800, 700, 600, [1, 2, 3, 4, 5, [10, 20, 30, 40, 50], 6, 7, 8, 9], 500, 400, 300, 200, 100]]
+# Access list: [10]
+# Access list: [ ]
+#
+
+x = [100, 200, 300, 400, 500, [1, 2, 3, 4, 5, [10, 20, 30, 40, 50], 6, 7, 8, 9], 600, 700, 800]
+
+# Access list: [1, 2, 3, 4]
+print(x[5][:4])
+
+# Access list: [600, 700]
+print(x[-3:-1])
+
+# Access list: [100, 300, 500, 600, 800]
+print(x[::2])
+
+# Access list: [[800, 700, 600, [1, 2, 3, 4, 5, [10, 20, 30, 40, 50], 6, 7, 8, 9], 500, 400, 300, 200, 100]]
+y = x[::-1]
+print([y])
+
+# Access list: [10]
+print(x[5][5][0])
+
+# Access list: [ ]
+y = x[0:0:]
+print(y)
+
+# print(x[,0:2])
+
+========================================================================================================================
+# 2. Create a list of thousand numbers using range and xrange and see the difference between each
+# other.
+# (For reference:https://www.techbeamers.com/python-xrange-range/)
+
+x = range(1,1000,1)
+print(x)
+print(type(x))
+
+# xr = xrange(1,100)
+# In Python 3.x, the xrange function doesn’t exist, whereas it provides the range() function.
+# The reality is that “xrange” has got its name changed to “range” in Python 3.x.
+
+========================================================================================================================
+# 3. How Tuple is beneficial as compared to the list?
+
+# If we do not want to modify existing values, then we can use tuple as it is immutable.
+# Since tuple is immutable,it will have fixed memory and List can have extra memory allocated.
+
+========================================================================================================================
+# 4. Write a program in Python to iterate through the list of numbers in the range of 1,100 and print
+# the number which is divisible by 3 and is a multiple of 2.
+
+res =[]
+def divby3and2():
+
+    for x in range(1,101):
+        if x%3==0 and x%2 == 0:
+            res.append(x)
+    print(res)
+
+divby3and2()
+
+========================================================================================================================
+# 5. Write a program in Python to reverse a string and print only the vowel alphabet if it exists in the
+# string with their index.
+
+str = "Vowel"
+y = str[::-1]
+print("Given String:", str)
+print("Reversed String:", y)
+
+for index, element in enumerate(str):
+    if element in ('a', 'e', 'i', 'o', 'u'):
+        print("{} element in index {}".format(element, index))
+
+========================================================================================================================
+# 6. Write a program in Python to iterate through the string “hello my name is abcde” and print the
+# string which is having an even length.
+
+str = "hello my name is abcde"
+
+for i in str.split(" "):
+    if len(i) % 2 == 0:
+        print(i)
+
+========================================================================================================================
+# 7. Write a program in python to print the pair of numbers whose sum is equal to the result
+# number that is let's say 8.
+# x=[1,2,3,4,5,6,7,8,9,-1]
+
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, -1]
+
+x.sort()
+print(x)
+target = 8
+res = []
+
+for i in range(0, len(x)):
+    for j in range(i, len(x)):
+        sum1 = x[i] + x[j]
+
+        if sum1 == target:
+            temp = x[i], x[j]
+            res.append(temp)
+
+print("Result :", res )
+
+========================================================================================================================
+# 8. Write a program in Python to complete the following task:
+# Create two lists such as even_list and odd_list
+# Ask user to enter a number in the range of 1,50 and make sure if the entered number is
+# even, append it to the even_list and if the entered number is odd append it to the odd_list.
+# Keep that in mind you can only add 5 items in each list
+# Make sure once you enter all the 5 elements, calculate the sum of the list and return the
+# maximum of the list.
+
+even_list = []
+odd_list = []
+
+
+for i in range(0, 10):
+    inp = eval(input("Enter a number in the range of 1,50: "))
+    if(inp%2 == 0):
+        even_list.append(inp)
+        print(even_list)
+        if (len(even_list) == 5):
+            break
+    else:
+        odd_list.append(inp)
+        print(odd_list)
+        if (len(odd_list) == 5):
+            break
+
+sum_odd = sum(odd_list)
+print("Sum of odd_list {}:".format(odd_list), sum_odd)
+
+sum_evn = sum(even_list)
+print("Sum of even_list {}:".format(even_list), sum_evn)
+
+print("Maximum of the list is: ", max(sum_evn,sum_odd))
+
+========================================================================================================================
+# 9. Write a program to find out the occurrence of a specific character from an alphanumeric string.
+# Sample input: 12abcbacbaba344ab
+# Expected output: a=5 b=5 c=2
+# NOTE: Make sure to avoid counting the occurrence of numeric values in the string.
+
+str =" 12abcbacbaba344ab"
+dict = {}
+for ch in str:
+    if ch.isalpha() and dict.__contains__(ch):
+        dict[ch] = dict.get(ch)+1
+    elif ch.isalpha():
+        dict[ch] = 1
+
+print(dict)
+
+========================================================================================================================
+# 10. Generate and print another tuple whose values are even numbers in the given tuple
+# (1,2,3,4,5,6,7,8,9,10).
+
+t = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+res = []
+for item in t:
+    if item % 2 == 0:
+        res.append(item)
+
+print(tuple(res))
+
+
+
